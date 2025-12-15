@@ -111,6 +111,8 @@ services:
       dockerfile: Dockerfile
     container_name: guessthemodel-frontend
     environment:
+      # Note: NEXT_PUBLIC_API_URL uses localhost because the frontend makes
+      # client-side API calls from the browser, not from the Next.js server
       - NEXT_PUBLIC_API_URL=http://localhost:8000
     ports:
       - "3000:3000"
