@@ -2,7 +2,7 @@
 
 A full-stack web application built with Next.js, FastAPI, PostgreSQL, Redis, and Celery. This monorepo contains both frontend and backend services orchestrated with Docker Compose.
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 guess-the-model/
@@ -13,7 +13,7 @@ guess-the-model/
 │   ├── public/       # Static assets
 │   ├── Dockerfile
 │   └── package.json
-├── backend/           # FastAPI application (Python 3.11+)
+├── backend/           # FastAPI application (Python 3.12+)
 │   ├── app/
 │   │   ├── main.py           # FastAPI entry point
 │   │   ├── config.py         # Configuration management
@@ -29,7 +29,7 @@ guess-the-model/
 └── README.md
 ```
 
-## 🚀 Technology Stack
+## Technology Stack
 
 ### Frontend
 - **Next.js 14** - React framework with App Router
@@ -49,7 +49,7 @@ guess-the-model/
 - **PostgreSQL 16** - Database
 - **Redis 7** - Cache and Celery broker
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Docker (version 20.10+)
 - Docker Compose (version 2.0+)
@@ -57,12 +57,12 @@ guess-the-model/
 
 For local development without Docker:
 - Node.js 20+
-- Python 3.11+
+- Python 3.12+
 - PostgreSQL 16+
 - Redis 7+
 - uv (Python package manager)
 
-## 🛠️ Setup Instructions
+## Setup Instructions
 
 ### Quick Start with Docker Compose
 
@@ -103,9 +103,7 @@ For local development without Docker:
 
 3. **Create virtual environment and install dependencies:**
    ```bash
-   uv venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   uv pip install -r pyproject.toml
+   uv sync
    ```
 
 4. **Set up environment variables:**
@@ -160,7 +158,7 @@ For local development without Docker:
 5. **Access the frontend:**
    Open http://localhost:3000 in your browser
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ### Health Check
 - `GET /health` - Main health check
@@ -183,7 +181,7 @@ curl -X POST http://localhost:8000/api/tasks \
 curl http://localhost:8000/api/tasks/{task_id}
 ```
 
-## 🐳 Docker Services
+## Docker Services
 
 The `docker-compose.yml` orchestrates the following services:
 
@@ -219,7 +217,7 @@ docker-compose up --build
 docker-compose down -v
 ```
 
-## ��️ Database Migrations
+## Database Migrations
 
 ### Create a new migration
 
@@ -240,7 +238,7 @@ alembic upgrade head
 alembic downgrade -1
 ```
 
-## 📦 Project Features
+## Project Features
 
 - ✅ Full-stack TypeScript/Python application
 - ✅ RESTful API with FastAPI
@@ -254,15 +252,7 @@ alembic downgrade -1
 - ✅ Health check endpoints
 - ✅ API documentation (Swagger/OpenAPI)
 
-## 🧪 Development Workflow
-
-1. Make changes to code
-2. Changes are automatically reloaded (hot reload enabled)
-3. Test your changes
-4. Create database migrations if needed
-5. Commit your changes
-
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -284,14 +274,6 @@ Default ports:
 
 To change ports, modify the `docker-compose.yml` file.
 
-## 📝 License
-
-This is a hobby project for learning purposes.
-
-## 🤝 Contributing
+## Contributing
 
 This is a personal hobby project, but suggestions and improvements are welcome!
-
-## 📧 Contact
-
-For questions or feedback, please open an issue on GitHub.

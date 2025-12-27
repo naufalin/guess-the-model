@@ -1,5 +1,5 @@
 # Backend Dockerfile using uv
-FROM ghcr.io/astral-sh/uv:python3.11-bookworm-slim AS builder
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
 
 WORKDIR /app
 
@@ -13,12 +13,12 @@ COPY pyproject.toml ./
 RUN uv pip install --system -r pyproject.toml
 
 # Final stage
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 WORKDIR /app
 
 # Copy installed dependencies from builder
-COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
+COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 
 # Copy application code
