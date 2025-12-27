@@ -1,20 +1,24 @@
 """API endpoints."""
+
+
 from fastapi import APIRouter, BackgroundTasks
 from pydantic import BaseModel
+
 from app.tasks.sample_tasks import sample_task
-from typing import Optional
 
 router = APIRouter()
 
 
 class TaskCreate(BaseModel):
     """Task creation model."""
+
     name: str
-    description: Optional[str] = None
+    description: str | None = None
 
 
 class TaskResponse(BaseModel):
     """Task response model."""
+
     task_id: str
     name: str
     status: str
@@ -42,21 +46,17 @@ async def create_task(task: TaskCreate, background_tasks: BackgroundTasks):
     """Create a new background task."""
     # Trigger Celery task
     celery_task = sample_task.delay(task.name)
-    
-    return TaskResponse(
-        task_id=celery_task.id,
-        name=task.name,
-        status="queued"
-    )
+
+    return TaskResponse(task_id=celery_task.id, name=task.name, status="queued")
 
 
 @router.get("/tasks/{task_id}")
 async def get_task(task_id: str):
     """Get task status."""
     from app.tasks.celery_app import celery_app
-    
+
     result = celery_app.AsyncResult(task_id)
-    
+
     return {
         "task_id": task_id,
         "status": result.status,

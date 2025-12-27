@@ -1,5 +1,7 @@
 """Sample Celery tasks."""
+
 import time
+
 from app.tasks.celery_app import celery_app
 
 
@@ -7,13 +9,13 @@ from app.tasks.celery_app import celery_app
 def sample_task(task_name: str):
     """Sample background task that simulates processing."""
     print(f"Processing task: {task_name}")
-    
+
     # Simulate some work
     time.sleep(5)
-    
+
     result = f"Task '{task_name}' completed successfully!"
     print(result)
-    
+
     return result
 
 
